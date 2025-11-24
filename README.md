@@ -24,28 +24,10 @@ A lightweight, single-page application (SPA) for calculating taxes and contribut
     *   **Contextual Help:** Tooltips and FAQs located directly next to relevant inputs.
 *   **Zero Dependencies:** Pure HTML, CSS, and Vanilla JavaScript in a single file.
 
-## 🚀 Live Demo
+## 🚀 Live
 
 <!-- Replace the link below with your actual GitHub Pages link after deployment -->
 [👉 Click here to view the Calculator](https://ankhezar.github.io/hr.tax.calculator)
-
-## 🛠️ Installation & Usage
-
-Since this is a client-side Single Page Application contained within one file, no build process or package manager is required.
-
-### Local Development
-1.  Clone the repository:
-    ```bash
-    git clone https://github.com/yourusername/croatia-obrt-calculator.git
-    ```
-2.  Open `index.html` in any modern web browser.
-
-### Deployment (GitHub Pages)
-1.  Go to your repository **Settings**.
-2.  Click on **Pages** in the sidebar.
-3.  Under **Build and deployment**, select **Source** -> `Deploy from a branch`.
-4.  Select `main` (or `master`) and save.
-5.  Your site will be live at `https://yourusername.github.io/repo-name/`.
 
 ## 📊 Logic & Tax Rules (2025/2026)
 
