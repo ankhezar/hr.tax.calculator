@@ -27,7 +27,7 @@ A lightweight, single-page application (SPA) for calculating taxes and contribut
 ## 🚀 Live Demo
 
 <!-- Replace the link below with your actual GitHub Pages link after deployment -->
-[👉 Click here to view the Calculator](https://yourusername.github.io/your-repo-name)
+[👉 Click here to view the Calculator](https://ankhezar.github.io/hr.tax.calculator)
 
 ## 🛠️ Installation & Usage
 
