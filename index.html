@@ -9,31 +9,24 @@
             --primary: #dc2626;       
             --primary-hover: #b91c1c; 
             --primary-subtle: #fef2f2;
-            
             --bg-body: #f8fafc;       
             --bg-card: #ffffff;
             --bg-input: #ffffff;
-            
             --text-main: #0f172a;     
             --text-muted: #64748b;    
-            
             --border: #e2e8f0;        
             --ring-focus: rgba(220, 38, 38, 0.3);
-            
             --success-text: #059669;  
             --danger-text: #dc2626;   
             --warning-bg: #fffbeb;    
             --warning-text: #92400e;  
-            
             --breach-bg: #450a0a;     
             --breach-border: #7f1d1d;
             --breach-text: #fecaca;
-            
             --badge-bg: #f1f5f9;
             --badge-text: #475569;
-
-            --btn-bg: #f1f5f9;
-            --btn-active: #e2e8f0;
+            --btn-bg: #f8fafc;
+            --btn-active: #fee2e2;
         }
 
         [data-theme="dark"] {
@@ -56,8 +49,8 @@
             --breach-text: #fecaca;
             --badge-bg: #334155;
             --badge-text: #cbd5e1;
-            --btn-bg: #334155;
-            --btn-active: #475569;
+            --btn-bg: #1e293b;
+            --btn-active: #334155;
         }
 
         * { box-sizing: border-box; touch-action: manipulation; }
@@ -124,44 +117,44 @@
         .form-group { position: relative; }
         .label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; font-size: 0.85rem; font-weight: 600; position: relative; }
         
-        .input-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
+        .input-wrapper { position: relative; display: flex; align-items: center; }
 
+        /* INPUT STYLING & HIDING NATIVE SPINNERS */
         .form-control {
-            width: 100%; height: 48px; padding: 0 16px; 
-            padding-right: 100px; 
-            border: 1px solid var(--border);
-            background-color: var(--bg-input); color: var(--text-main); border-radius: 10px; font-size: 1rem;
-            appearance: none;
-            -moz-appearance: textfield;
+            width: 100%; height: 48px; padding: 0 16px; padding-right: 100px; 
+            border: 1px solid var(--border); background-color: var(--bg-input); color: var(--text-main); 
+            border-radius: 10px; font-size: 1rem; 
+            appearance: none; -moz-appearance: textfield;
         }
+        .form-control:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--ring-focus); }
+        
+        /* Strictly hide native spinners */
         .form-control::-webkit-outer-spin-button,
         .form-control::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
         
         select.form-control {
-            padding-right: 40px;
-            cursor: pointer;
+            padding-right: 40px; cursor: pointer;
             background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
             background-repeat: no-repeat; background-position: right 16px center; background-size: 16px;
         }
-        .form-control:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--ring-focus); }
 
-        /* SPINNERS */
-        .spinner-group {
-            position: absolute; right: 4px; top: 4px; bottom: 4px; display: flex; gap: 4px;
-        }
+        /* THEMED CUSTOM SPINNERS */
+        .spinner-group { position: absolute; right: 4px; top: 4px; bottom: 4px; display: flex; gap: 4px; }
+        
         .spin-btn {
-            width: 42px; height: 100%; border: 1px solid var(--border); background: var(--btn-bg);
-            border-radius: 6px; color: var(--text-main); font-size: 1.25rem; font-weight: 400;
+            width: 42px; height: 100%; 
+            border: 1px solid var(--border); 
+            background: var(--btn-bg);
+            border-radius: 6px; 
+            color: var(--primary); /* Theme Color */
+            font-size: 1.25rem; font-weight: 500;
             cursor: pointer; display: flex; align-items: center; justify-content: center;
             transition: all 0.1s; user-select: none; -webkit-tap-highlight-color: transparent;
         }
+        .spin-btn:hover { background: var(--primary-subtle); border-color: var(--primary); }
         .spin-btn:active { background: var(--btn-active); transform: scale(0.96); }
 
-        /* POPOVER */
+        /* INFO TRIGGER & POPOVER */
         .info-trigger {
             cursor: pointer; color: var(--primary); background: var(--primary-subtle);
             width: 18px; height: 18px; border-radius: 50%; text-align: center; line-height: 18px;
@@ -205,6 +198,14 @@
         .badge { font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; background: var(--badge-bg); margin-left: 6px; vertical-align: middle; }
         .source-link { display: inline-block; font-size: 0.75rem; color: var(--primary); text-decoration: none; margin-top: 4px; }
         .source-link:hover { text-decoration: underline; }
+
+        /* Dependents Section */
+        .dependents-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+            background: var(--bg-body); padding: 1rem; border-radius: 12px;
+            margin-bottom: 1.5rem; border: 1px solid var(--border);
+        }
+        .dep-title { grid-column: span 2; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-main); }
     </style>
 </head>
 <body>
@@ -223,7 +224,7 @@
         </div>
     </div>
 
-    <!-- MAIN MODE TOGGLE -->
+    <!-- MODE TOGGLE -->
     <div class="toggle-group">
         <div class="toggle-btn active" onclick="setMode('pausal', event)" id="tab-pausal">
             <span>Paušalni</span>
@@ -241,7 +242,7 @@
         </div>
     </div>
     
-    <!-- SUB STATUS TOGGLE -->
+    <!-- STATUS TOGGLE -->
     <div class="toggle-group" style="margin-top: -1rem; transform: scale(0.95);">
         <div class="toggle-btn active" onclick="setStatus('main')" id="stat-main">
             <span data-t="stat_main">Glavno zanimanje</span>
@@ -264,8 +265,8 @@
             <div class="input-wrapper">
                 <input type="number" id="revenue" class="form-control" value="28000" step="1000" oninput="calc()">
                 <div class="spinner-group">
-                    <button type="button" class="spin-btn" onclick="adjustVal('revenue', -1000)" aria-label="Smanji">−</button>
-                    <button type="button" class="spin-btn" onclick="adjustVal('revenue', 1000)" aria-label="Povećaj">+</button>
+                    <button type="button" class="spin-btn" onclick="adjustVal('revenue', -1000)">−</button>
+                    <button type="button" class="spin-btn" onclick="adjustVal('revenue', 1000)">+</button>
                 </div>
             </div>
         </div>
@@ -282,8 +283,8 @@
             <div class="input-wrapper">
                 <input type="number" id="expenses" class="form-control" value="5000" step="500" oninput="calc()">
                 <div class="spinner-group">
-                    <button type="button" class="spin-btn" onclick="adjustVal('expenses', -500)" aria-label="Smanji">−</button>
-                    <button type="button" class="spin-btn" onclick="adjustVal('expenses', 500)" aria-label="Povećaj">+</button>
+                    <button type="button" class="spin-btn" onclick="adjustVal('expenses', -500)">−</button>
+                    <button type="button" class="spin-btn" onclick="adjustVal('expenses', 500)">+</button>
                 </div>
             </div>
         </div>
@@ -298,7 +299,7 @@
                 </div>
             </div>
             <select id="city-select" class="form-control" onchange="handleCityChange()">
-                <option value="Zagreb" selected>Zagreb</option> <!-- DEFAULT -->
+                <option value="Zagreb" selected>Zagreb</option> 
                 <option value="Split">Split</option>
                 <option value="Rijeka">Rijeka</option>
                 <option value="Osijek">Osijek</option>
@@ -306,7 +307,7 @@
                 <option value="Pula">Pula</option>
                 <option value="Varaždin">Varaždin</option>
                 <option value="Dubrovnik">Dubrovnik</option>
-                <option value="Samobor">Samobor (Tax Free)</option>
+                <option value="Samobor">Samobor</option>
                 <option value="custom" data-t="city_custom">Ostalo / Ručni unos</option>
             </select>
             <input type="number" id="city-rate" class="form-control" value="12" step="0.1" oninput="calc()" style="margin-top:8px; display:none;">
@@ -314,6 +315,41 @@
             <a href="https://porezna-uprava.gov.hr/hr/porezne-stope-godisnjeg-poreza-na-dohodak/4764" target="_blank" class="source-link">
                 Pronađi stopu za svoje mjesto (Porezna Uprava) ↗
             </a>
+        </div>
+    </div>
+
+    <!-- NEW DEPENDENTS CONFIGURATION (Dohodovni Only) -->
+    <div id="dependents-config" class="dependents-grid" style="display:none;">
+        <div class="dep-title">
+            <span data-t="lbl_dep_config">Postavke Osobnog Odbitka (2025)</span>
+            <span class="info-trigger" data-tip="tip-dep-config">?</span>
+            <div id="tip-dep-config" class="popover">
+                <span data-t="desc_dep_config"></span>
+            </div>
+        </div>
+        
+        <!-- Children -->
+        <div class="form-group">
+            <div class="label-row" data-t="lbl_children">Broj Djece</div>
+            <div class="input-wrapper">
+                <input type="number" id="num-children" class="form-control" value="0" min="0" max="10" oninput="calc()">
+                <div class="spinner-group">
+                    <button type="button" class="spin-btn" onclick="adjustVal('num-children', -1)">−</button>
+                    <button type="button" class="spin-btn" onclick="adjustVal('num-children', 1)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other Dependents -->
+        <div class="form-group">
+            <div class="label-row" data-t="lbl_dependents">Uzdržavani Čl.</div>
+            <div class="input-wrapper">
+                <input type="number" id="num-dependents" class="form-control" value="0" min="0" max="5" oninput="calc()">
+                <div class="spinner-group">
+                    <button type="button" class="spin-btn" onclick="adjustVal('num-dependents', -1)">−</button>
+                    <button type="button" class="spin-btn" onclick="adjustVal('num-dependents', 1)">+</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -343,13 +379,7 @@
                 <span class="val" id="out-profit">0.00 €</span>
             </div>
             <div class="result-row sub">
-                <span>
-                    - <span data-t="lbl_deduction">Osobni Odbitak</span>
-                    <span class="info-trigger" data-tip="tip-deduction" style="font-size:0.7rem; width:14px; height:14px; line-height:14px;">?</span>
-                </span>
-                <div id="tip-deduction" class="popover">
-                    <span data-t="desc_deduction"></span>
-                </div>
+                <span>- <span data-t="lbl_deduction">Osobni Odbitak</span></span>
                 <span class="val" id="out-deduction">0.00 €</span>
             </div>
             <div class="result-row" style="margin-bottom:1.5rem;">
@@ -362,7 +392,6 @@
             <span data-t="res_tax">Godišnji porez</span>
             <span class="val text-red" id="out-tax">0.00 €</span>
         </div>
-        <!-- QUARTERLY TAX DETAIL -->
         <div class="result-row detail" id="tax-detail-row">
             <span id="out-tax-detail">(0.00 € kvartalno)</span>
         </div>
@@ -377,7 +406,6 @@
             </div>
             <span class="val text-red" id="out-soc">0.00 €</span>
         </div>
-        <!-- MONTHLY CONTRIB DETAIL -->
         <div class="result-row detail" id="soc-detail-row">
             <span id="out-soc-detail">(0.00 € mjesečno)</span>
         </div>
@@ -397,7 +425,6 @@
             </div>
         </div>
 
-        <!-- TOTALS & EFFECTIVE RATE -->
         <div class="result-row total">
             <div class="net-row-content">
                 <span data-t="res_net">Neto Zarada</span>
@@ -417,19 +444,17 @@
     const CONFIG = {
         limit_pausal: 60000, 
         
-        // CRITICAL DATA UPDATE: 2025 Rates
-        // 'low' = Regular (Dohodovni) rate
-        // 'pausal' = Paušalni flat rate (Defined by City)
+        // 2025 RATES
         cities: {
             "Zagreb": { low: 23.6, high: 35.4, pausal: 12.0 },
             "Split": { low: 21.5, high: 32.25, pausal: 12.0 },
             "Rijeka": { low: 22.4, high: 33.6, pausal: 12.0 },
-            "Osijek": { low: 20.0, high: 30.0, pausal: 10.0 }, // Osijek reduced pausal
+            "Osijek": { low: 20.0, high: 30.0, pausal: 10.0 }, 
             "Zadar": { low: 20.0, high: 30.0, pausal: 12.0 },
             "Pula": { low: 20.0, high: 30.0, pausal: 12.0 },
             "Varaždin": { low: 22.0, high: 33.0, pausal: 12.0 },
             "Dubrovnik": { low: 20.0, high: 30.0, pausal: 10.0 },
-            "Samobor": { low: 18.0, high: 27.0, pausal: 10.0 }, // Often lower
+            "Samobor": { low: 18.0, high: 27.0, pausal: 10.0 }, 
         },
 
         pausal_tiers: [
@@ -448,30 +473,32 @@
         },
 
         regular: {
-            personal_deduction: 7200, 
+            base_deduction_monthly: 600,
             tax_threshold: 50400,         
             min_base_annual: 13200, 
             rates: { mio1: 0.15, mio2: 0.05, zo: 0.165 }
-        }
+        },
+        
+        child_coeffs: [0.5, 0.7, 1.0, 1.4, 1.9, 2.5, 3.2, 4.0, 4.9, 6.0]
     };
 
     const TEXT = {
         hr: {
-            desc_pausal: "<strong>Paušalni obrt 2025:</strong><br>Limit: 60.000 €<br>Porez: Gradovi odlučuju (obično 10-12%).<br>Doprinosi: 262,51 €/mj.<br><em>*Prirez je ukinut.</em>",
-            desc_regular: "<strong>Dohodovni (KP):</strong> Obavezno iznad 60.000 €. Vodite knjige, porez na stvarni dobitak po stopama grada (npr. 20-23.6%).",
+            desc_pausal: "<strong>Paušalni obrt 2025:</strong><br>Limit: 60.000 €<br>Porez: Gradovi odlučuju (10-12%).<br>Doprinosi: 262,51 €/mj.<br><em>*Prirez je ukinut.</em>",
+            desc_regular: "<strong>Dohodovni (KP):</strong> Obavezno iznad 60.000 €. Vodite knjige, porez na stvarni dobitak po stopama grada.",
             stat_main: "Glavno zanimanje",
             stat_side: "Uz rad (Drugo)",
             lbl_rev: "Naplaćeni Prihodi (€)",
-            desc_rev: "Ukupni iznos naplaćenih računa (načelo blagajne).",
+            desc_rev: "Ukupni iznos naplaćenih računa.",
             lbl_exp: "Poslovni Troškovi",
-            desc_exp: "<strong>Samo za Dohodovni:</strong> Priznaju se svi troškovi povezani s poslovanjem: najam, oprema, materijal, 50-100% automobila, itd.<br><br>Kod Paušalnog obrta troškovi se <strong>ne pravdaju</strong>.",
+            desc_exp: "<strong>Samo za Dohodovni:</strong> Priznaju se svi troškovi poslovanja.<br><br>Kod Paušalnog obrta troškovi se <strong>ne pravdaju</strong>.",
             city_custom: "Ostalo / Ručni unos",
             lbl_city: "Lokacija (Porez)",
-            desc_city: "Gradovi samostalno određuju stopu poreza. <strong>Paušalni obrt često ima drugačiju (nižu) stopu od dohodovnog!</strong> Provjerite službene stranice.",
+            desc_city: "Gradovi određuju stopu poreza. Paušalni obrt često ima nižu stopu od dohodovnog.",
             res_tier: "Paušalni Razred",
             res_gross_profit: "Bruto Dobit",
             lbl_deduction: "Osobni Odbitak",
-            desc_deduction: "<strong>Tax Free Allowance:</strong><br>Iznosi 7.200 € godišnje (600 € mjesečno).<br>Ovaj iznos se odbija od dobiti prije oporezivanja.<br><em>*Vrijedi samo za dohodovni obrt.</em>",
+            desc_deduction: "<strong>Ukupni godišnji odbitak.</strong><br>Sastoji se od osnovnog (7.200€) + olakšica za djecu i uzdržavane članove.",
             res_base: "Porezna osnovica",
             res_tax: "Godišnji Porez",
             res_soc: "Godišnji Doprinosi",
@@ -482,24 +509,28 @@
             term_quarterly: "kvartalno",
             term_monthly: "mjesečno",
             lbl_tier_limit: "Limit razreda",
-            lbl_tier_base: "Godišnja osnovica"
+            lbl_tier_base: "Godišnja osnovica",
+            lbl_dep_config: "Osobni Odbitak (2025)",
+            desc_dep_config: "Unesite broj djece i uzdržavanih članova za izračun uvećanog osobnog odbitka.",
+            lbl_children: "Broj Djece",
+            lbl_dependents: "Uzdržavani Čl."
         },
         en: {
-            desc_pausal: "<strong>Flat-rate (Paušalni) 2025:</strong><br>Limit: 60,000 €<br>Tax: Set by City (usually 10-12%).<br>Contribs: 262.51 €/mo.<br><em>*Surtax abolished.</em>",
-            desc_regular: "<strong>Income-based (Dohodovni):</strong> Mandatory > 60k. Real bookkeeping. Taxed at city rates (e.g., 20-23.6%).",
+            desc_pausal: "<strong>Flat-rate (Paušalni) 2025:</strong><br>Limit: 60,000 €<br>Tax: City rate (10-12%).<br>Contribs: 262.51 €/mo.",
+            desc_regular: "<strong>Income-based (Dohodovni):</strong> Mandatory > 60k. Real bookkeeping. Taxed at city rates.",
             stat_main: "Main Job",
             stat_side: "Side Job",
             lbl_rev: "Annual Revenue (€)",
-            desc_rev: "Total collected invoices (Cash basis).",
+            desc_rev: "Total collected invoices.",
             lbl_exp: "Business Expenses",
-            desc_exp: "<strong>Income-based only:</strong> All business related costs are deductible: rent, equipment, car (50-100%), etc.<br><br>For Flat-rate, expenses are <strong>ignored</strong>.",
+            desc_exp: "<strong>Income-based only:</strong> Business costs are deductible.<br><br>For Flat-rate, expenses are <strong>ignored</strong>.",
             city_custom: "Other / Manual",
             lbl_city: "Location (Tax Rate)",
-            desc_city: "Cities set their own income tax rates. <strong>Flat-rate trades often have a different (lower) rate than regular income!</strong> Check official sources.",
+            desc_city: "Cities set tax rates. Flat-rate usually has lower rates than regular income.",
             res_tier: "Tax Tier",
             res_gross_profit: "Gross Profit",
             lbl_deduction: "Personal Allowance",
-            desc_deduction: "<strong>Tax Free Allowance:</strong><br>7,200 € per year (600 € monthly).<br>This amount is deducted from your profit before tax.<br><em>*Applies only to Income-based mode.</em>",
+            desc_deduction: "<strong>Total Annual Deduction.</strong><br>Includes Base (7,200€) + allowances for children/dependents.",
             res_base: "Tax Base",
             res_tax: "Annual Tax",
             res_soc: "Annual Contributions",
@@ -510,24 +541,28 @@
             term_quarterly: "quarterly",
             term_monthly: "monthly",
             lbl_tier_limit: "Tier Limit",
-            lbl_tier_base: "Annual Base"
+            lbl_tier_base: "Annual Base",
+            lbl_dep_config: "Deduction Config (2025)",
+            desc_dep_config: "Enter number of children and dependents to calculate total personal allowance.",
+            lbl_children: "Children",
+            lbl_dependents: "Dependents"
         },
         sl: {
-            desc_pausal: "<strong>Paušalni 2025:</strong><br>Limit: 60.000 €<br>Davek: Določajo mesta (10-12%).<br>Prispevki: 262,51 €/mes.<br><em>*Prirez ukinjen.</em>",
-            desc_regular: "<strong>Dohodovni:</strong> Obvezno nad 60k. Vodenje knjig. Davek po stopnji mesta (20-23%).",
+            desc_pausal: "<strong>Paušalni 2025:</strong><br>Limit: 60.000 €<br>Davek: Mesta (10-12%).<br>Prispevki: 262,51 €/mes.",
+            desc_regular: "<strong>Dohodovni:</strong> Obvezno nad 60k. Vodenje knjig.",
             stat_main: "Glavni poklic",
             stat_side: "Popoldanski",
             lbl_rev: "Letni prihodki (€)",
             desc_rev: "Plačani računi.",
             lbl_exp: "Poslovni stroški",
-            desc_exp: "<strong>Samo za Dohodovni:</strong> Priznajo se vsi poslovni stroški.<br><br>Pri Pavšalnem se stroški <strong>ne upoštevajo</strong>.",
+            desc_exp: "<strong>Samo za Dohodovni:</strong> Priznajo se stroški.<br><br>Pri Pavšalnem se stroški <strong>ne upoštevajo</strong>.",
             city_custom: "Drugo / Ročno",
             lbl_city: "Lokacija (Stopnja)",
-            desc_city: "Mesta določajo svojo stopnjo davka. <strong>Pavšalisti imajo pogosto nižjo stopnjo!</strong> Preverite uradni zemljevid.",
+            desc_city: "Mesta določajo stopnjo. Pavšalisti imajo pogosto nižjo!",
             res_tier: "Pavšalni razred",
             res_gross_profit: "Bruto dobiček",
             lbl_deduction: "Osebna olajšava",
-            desc_deduction: "<strong>Davčna olajšava:</strong><br>7.200 € letno (600 € mesečno).<br>Zmanjšuje davčno osnovo.<br><em>*Velja samo za dohodovni obrt.</em>",
+            desc_deduction: "<strong>Skupna letna olajšava.</strong><br>Osnova (7.200€) + otroci/vzdrževani člani.",
             res_base: "Davčna osnova",
             res_tax: "Letni davek",
             res_soc: "Letni prispevki",
@@ -538,7 +573,11 @@
             term_quarterly: "četrtletno",
             term_monthly: "mesečno",
             lbl_tier_limit: "Limit razreda",
-            lbl_tier_base: "Letna osnova"
+            lbl_tier_base: "Letna osnova",
+            lbl_dep_config: "Osebna olajšava (2025)",
+            desc_dep_config: "Vnesite število otrok in vzdrževanih članov.",
+            lbl_children: "Št. Otrok",
+            lbl_dependents: "Vzdrževani čl."
         }
     };
 
@@ -621,6 +660,10 @@
         const input = document.getElementById(id);
         let val = parseFloat(input.value) || 0;
         val = Math.max(0, val + amount);
+        
+        if(id === 'num-children') val = Math.min(10, val);
+        if(id === 'num-dependents') val = Math.min(5, val);
+        
         input.value = val;
         calc();
     }
@@ -632,6 +675,7 @@
         document.getElementById('tab-regular').className = m === 'regular' ? 'toggle-btn active' : 'toggle-btn';
         
         document.getElementById('grp-exp').style.display = m === 'regular' ? 'block' : 'none';
+        document.getElementById('dependents-config').style.display = m === 'regular' ? 'grid' : 'none';
         document.getElementById('pausal-breakdown').style.display = m === 'pausal' ? 'block' : 'none';
         
         document.getElementById('regular-breakdown').style.display = m === 'regular' ? 'block' : 'none';
@@ -720,7 +764,22 @@
             document.getElementById('sub-zo').innerText = fmt(zo);
 
             let profitAfterSoc = profit - soc; 
-            let deduction = CONFIG.regular.personal_deduction;
+            
+            // CALC PERSONAL DEDUCTION (2025)
+            let baseDed = CONFIG.regular.base_deduction_monthly; // 600
+            let numChild = parseFloat(document.getElementById('num-children').value) || 0;
+            let numDep = parseFloat(document.getElementById('num-dependents').value) || 0;
+            
+            let childDed = 0;
+            for(let i=0; i<numChild; i++) {
+                let coeff = (i < CONFIG.child_coeffs.length) ? CONFIG.child_coeffs[i] : (CONFIG.child_coeffs[9] + (i-9));
+                childDed += (coeff * baseDed);
+            }
+            
+            let depDed = numDep * (0.5 * baseDed);
+            let monthlyTotalDed = baseDed + childDed + depDed;
+            let deduction = monthlyTotalDed * 12;
+
             let taxBase = Math.max(0, profitAfterSoc - deduction);
             
             document.getElementById('out-profit').innerText = fmt(profitAfterSoc);
