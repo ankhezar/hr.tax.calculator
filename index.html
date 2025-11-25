@@ -119,7 +119,6 @@
         
         .input-wrapper { position: relative; display: flex; align-items: center; }
 
-        /* INPUT STYLING & HIDING NATIVE SPINNERS */
         .form-control {
             width: 100%; height: 48px; padding: 0 16px; padding-right: 100px; 
             border: 1px solid var(--border); background-color: var(--bg-input); color: var(--text-main); 
@@ -153,7 +152,6 @@
         .spin-btn:active { background: var(--btn-active); transform: scale(0.96); }
 
         /* INFO TRIGGER & POPOVER */
-        /* Common relative wrapper for label+tooltip grouping */
         .label-wrapper { position: relative; display: inline-flex; align-items: center; }
 
         .info-trigger {
@@ -165,7 +163,7 @@
         .popover {
             display: none; 
             position: absolute; 
-            top: 26px; /* Below the trigger */
+            top: 26px; 
             left: 0; 
             width: 280px;
             background: var(--bg-card); 
@@ -621,6 +619,16 @@
             applyTheme();
         });
 
+        // LANGUAGE DETECTION
+        const userLang = navigator.language || navigator.userLanguage;
+        if (userLang.startsWith('hr')) {
+            state.lang = 'hr';
+        } else if (userLang.startsWith('sl')) {
+            state.lang = 'sl';
+        } else {
+            state.lang = 'en';
+        }
+
         document.addEventListener('click', function(e) {
             const trigger = e.target.closest('.info-trigger');
             if (trigger) {
@@ -664,6 +672,7 @@
             const key = el.dataset.t;
             if (TEXT[state.lang][key]) el.innerHTML = TEXT[state.lang][key];
         });
+        document.getElementById('btn-lang').innerText = state.lang.toUpperCase();
     }
 
     function handleCityChange() {
