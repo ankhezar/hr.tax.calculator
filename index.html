@@ -132,7 +132,7 @@
 
         .form-control {
             width: 100%; height: 48px; padding: 0 16px; 
-            padding-right: 100px; /* Increased padding for larger buttons */
+            padding-right: 100px; 
             border: 1px solid var(--border);
             background-color: var(--bg-input); color: var(--text-main); border-radius: 10px; font-size: 1rem;
             appearance: none;
@@ -149,77 +149,49 @@
         }
         .form-control:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--ring-focus); }
 
-        /* ACCESSIBLE SPINNERS */
+        /* SPINNERS */
         .spinner-group {
-            position: absolute;
-            right: 4px;
-            top: 4px;
-            bottom: 4px;
-            display: flex;
-            gap: 4px;
+            position: absolute; right: 4px; top: 4px; bottom: 4px; display: flex; gap: 4px;
         }
-        
         .spin-btn {
-            width: 42px; /* Large touch target */
-            height: 100%;
-            border: 1px solid var(--border);
-            background: var(--btn-bg);
-            border-radius: 6px;
-            color: var(--text-main);
-            font-size: 1.25rem;
-            font-weight: 400;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.1s;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
+            width: 42px; height: 100%; border: 1px solid var(--border); background: var(--btn-bg);
+            border-radius: 6px; color: var(--text-main); font-size: 1.25rem; font-weight: 400;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: all 0.1s; user-select: none; -webkit-tap-highlight-color: transparent;
         }
         .spin-btn:active { background: var(--btn-active); transform: scale(0.96); }
-        .spin-btn:focus-visible { outline: 2px solid var(--primary); z-index: 10; }
 
-
-        /* TOOLTIP / POPOVER */
+        /* POPOVER */
         .info-trigger {
             cursor: pointer; color: var(--primary); background: var(--primary-subtle);
             width: 18px; height: 18px; border-radius: 50%; text-align: center; line-height: 18px;
-            font-size: 0.75rem; display: inline-block; margin-left: 6px; user-select: none;
-            flex-shrink: 0;
+            font-size: 0.75rem; display: inline-block; margin-left: 6px; user-select: none; flex-shrink: 0;
         }
-        
         .popover {
-            display: none; 
-            position: absolute; 
-            top: 24px; 
-            left: 0; 
-            width: 280px;
-            background: var(--bg-card); 
-            border: 1px solid var(--border); 
-            padding: 16px;
-            border-radius: 12px; 
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.15); 
-            z-index: 1000;
-            font-size: 0.8rem; 
-            font-weight: 400; 
-            color: var(--text-muted);
-            line-height: 1.4;
-            text-align: left;
+            display: none; position: absolute; top: 24px; left: 0; width: 280px;
+            background: var(--bg-card); border: 1px solid var(--border); padding: 16px;
+            border-radius: 12px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.15); z-index: 1000;
+            font-size: 0.8rem; font-weight: 400; color: var(--text-muted); line-height: 1.4; text-align: left;
         }
         .popover.visible { display: block; animation: fadeUp 0.15s ease-out; }
         .popover.right { left: auto; right: 0; }
-        
         .popover strong { color: var(--text-main); font-weight: 600; }
-        .popover ul { margin: 8px 0 0 0; padding-left: 16px; }
-        .popover li { margin-bottom: 4px; }
-
         @keyframes fadeUp { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* RESULTS */
         .results-card { background: var(--bg-body); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; }
         .result-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; font-size: 0.95rem; position: relative; }
         .result-row.sub { padding-left: 1rem; color: var(--text-muted); font-size: 0.85rem; border-left: 2px solid var(--border); margin-bottom: 0.5rem; }
-        .result-row.total { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border); font-weight: 700; font-size: 1.25rem; }
-        
+        .result-row.total { 
+            display: flex; flex-direction: column; align-items: flex-end;
+            margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border); 
+            font-weight: 700; font-size: 1.25rem; 
+        }
+        .result-row.detail { justify-content: flex-end; margin-top: -0.5rem; margin-bottom: 0.75rem; font-size: 0.8rem; color: var(--text-muted); font-family: monospace; }
+
+        .net-row-content { display: flex; justify-content: space-between; width: 100%; align-items: center; }
+        .eff-rate-label { font-size: 0.8rem; font-weight: 500; color: var(--text-muted); margin-top: 4px; }
+
         .val { font-family: monospace; font-weight: 700; }
         .text-red { color: var(--danger-text); }
         .text-green { color: var(--success-text); }
@@ -230,7 +202,9 @@
             background: var(--breach-bg); color: var(--breach-text);
         }
         
-        .badge { font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; background: var(--badge-bg); margin-left: 6px; }
+        .badge { font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; background: var(--badge-bg); margin-left: 6px; vertical-align: middle; }
+        .source-link { display: inline-block; font-size: 0.75rem; color: var(--primary); text-decoration: none; margin-top: 4px; }
+        .source-link:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -240,7 +214,7 @@
         <div class="brand">
             <div class="brand-logo">🇭🇷</div>
             <div class="brand-text">
-                <h1>Obrt <span class="year-badge">2026</span></h1>
+                <h1>Obrt <span class="year-badge">2025</span></h1>
             </div>
         </div>
         <div class="controls">
@@ -288,10 +262,10 @@
                 </div>
             </div>
             <div class="input-wrapper">
-                <input type="number" id="revenue" class="form-control" value="50000" step="5000" oninput="calc()">
+                <input type="number" id="revenue" class="form-control" value="28000" step="1000" oninput="calc()">
                 <div class="spinner-group">
-                    <button type="button" class="spin-btn" onclick="adjustVal('revenue', -5000)" aria-label="Smanji">−</button>
-                    <button type="button" class="spin-btn" onclick="adjustVal('revenue', 5000)" aria-label="Povećaj">+</button>
+                    <button type="button" class="spin-btn" onclick="adjustVal('revenue', -1000)" aria-label="Smanji">−</button>
+                    <button type="button" class="spin-btn" onclick="adjustVal('revenue', 1000)" aria-label="Povećaj">+</button>
                 </div>
             </div>
         </div>
@@ -332,20 +306,34 @@
                 <option value="Pula">Pula</option>
                 <option value="Varaždin">Varaždin</option>
                 <option value="Dubrovnik">Dubrovnik</option>
+                <option value="Samobor">Samobor (Tax Free)</option>
                 <option value="custom" data-t="city_custom">Ostalo / Ručni unos</option>
             </select>
-            <input type="number" id="city-rate" class="form-control" value="20" step="0.1" oninput="calc()" style="margin-top:8px; display:none;">
+            <input type="number" id="city-rate" class="form-control" value="12" step="0.1" oninput="calc()" style="margin-top:8px; display:none;">
+            
+            <a href="https://porezna-uprava.gov.hr/hr/porezne-stope-godisnjeg-poreza-na-dohodak/4764" target="_blank" class="source-link">
+                Pronađi stopu za svoje mjesto (Porezna Uprava) ↗
+            </a>
         </div>
     </div>
 
     <div class="results-card">
         <!-- Paušal Tier Info -->
-        <div class="result-row" id="row-tier">
-            <span>
-                <span data-t="res_tier">Paušalni Razred</span>
-                <span class="badge" id="badge-tier">Tier 5</span>
-            </span>
-            <span class="val" id="out-tier-base">0 €</span>
+        <div id="pausal-breakdown">
+            <div class="result-row">
+                <span>
+                    <span data-t="res_tier">Paušalni Razred</span>
+                    <span class="badge" id="badge-tier">Tier 5</span>
+                </span>
+            </div>
+            <div class="result-row sub">
+                <span data-t="lbl_tier_limit">Limit razreda</span>
+                <span class="val" id="out-tier-limit">0 €</span>
+            </div>
+            <div class="result-row sub" style="margin-bottom:1.5rem;">
+                <span data-t="lbl_tier_base">Porezna Osnovica</span>
+                <span class="val" id="out-tier-base">0 €</span>
+            </div>
         </div>
 
         <!-- Tax Base (Regular) -->
@@ -374,6 +362,10 @@
             <span data-t="res_tax">Godišnji porez</span>
             <span class="val text-red" id="out-tax">0.00 €</span>
         </div>
+        <!-- QUARTERLY TAX DETAIL -->
+        <div class="result-row detail" id="tax-detail-row">
+            <span id="out-tax-detail">(0.00 € kvartalno)</span>
+        </div>
 
         <div class="result-row">
             <span>
@@ -384,6 +376,10 @@
                 <span data-t="desc_mio"></span>
             </div>
             <span class="val text-red" id="out-soc">0.00 €</span>
+        </div>
+        <!-- MONTHLY CONTRIB DETAIL -->
+        <div class="result-row detail" id="soc-detail-row">
+            <span id="out-soc-detail">(0.00 € mjesečno)</span>
         </div>
 
         <div id="breakdown-soc" style="display:none">
@@ -401,16 +397,16 @@
             </div>
         </div>
 
+        <!-- TOTALS & EFFECTIVE RATE -->
         <div class="result-row total">
-            <span data-t="res_net">Neto Zarada</span>
-            <span class="val text-green" id="out-net">0.00 €</span>
-        </div>
-        
-        <div class="result-row summary">
-            <span>
+            <div class="net-row-content">
+                <span data-t="res_net">Neto Zarada</span>
+                <span class="val text-green" id="out-net">0.00 €</span>
+            </div>
+            <div class="eff-rate-label">
                 <span data-t="lbl_effective">Efektivno davanja:</span> 
-                <strong id="out-eff">0.0%</strong>
-            </span>
+                <span id="out-eff-val">0.0%</span>
+            </div>
         </div>
     </div>
 
@@ -421,30 +417,33 @@
     const CONFIG = {
         limit_pausal: 60000, 
         
+        // CRITICAL DATA UPDATE: 2025 Rates
+        // 'low' = Regular (Dohodovni) rate
+        // 'pausal' = Paušalni flat rate (Defined by City)
         cities: {
-            "Zagreb": { low: 23.6, high: 35.4 },
-            "Split": { low: 21.5, high: 32.25 },
-            "Rijeka": { low: 22.4, high: 33.6 },
-            "Osijek": { low: 20.0, high: 30.0 },
-            "Zadar": { low: 20.0, high: 30.0 },
-            "Pula": { low: 20.0, high: 30.0 },
-            "Varaždin": { low: 22.0, high: 33.0 },
-            "Dubrovnik": { low: 20.0, high: 30.0 }
+            "Zagreb": { low: 23.6, high: 35.4, pausal: 12.0 },
+            "Split": { low: 21.5, high: 32.25, pausal: 12.0 },
+            "Rijeka": { low: 22.4, high: 33.6, pausal: 12.0 },
+            "Osijek": { low: 20.0, high: 30.0, pausal: 10.0 }, // Osijek reduced pausal
+            "Zadar": { low: 20.0, high: 30.0, pausal: 12.0 },
+            "Pula": { low: 20.0, high: 30.0, pausal: 12.0 },
+            "Varaždin": { low: 22.0, high: 33.0, pausal: 12.0 },
+            "Dubrovnik": { low: 20.0, high: 30.0, pausal: 10.0 },
+            "Samobor": { low: 18.0, high: 27.0, pausal: 10.0 }, // Often lower
         },
 
         pausal_tiers: [
-            { limit: 5000, base: 1692.05 },  
-            { limit: 8500, base: 2290.00 },
-            { limit: 11500, base: 2982.00 },
-            { limit: 15000, base: 4473.00 },
-            { limit: 30000, base: 5964.00 },
-            { limit: 40000, base: 6890.00 },
-            { limit: 50000, base: 7900.00 }, 
-            { limit: 60000, base: 9000.00 } 
+            { limit: 11300.00, base: 1695.00 },  
+            { limit: 15300.00, base: 2295.00 },
+            { limit: 19900.00, base: 2985.00 },
+            { limit: 30600.00, base: 4590.00 },
+            { limit: 40000.00, base: 6000.00 },
+            { limit: 50000.00, base: 7500.00 },
+            { limit: 60000.00, base: 9000.00 } 
         ],
         
         contrib: {
-            main_annual_pausal: 2850.00, 
+            main_monthly_pausal: 262.51, 
             side_rate: 0.175
         },
 
@@ -458,17 +457,17 @@
 
     const TEXT = {
         hr: {
-            desc_pausal: "<strong>Paušalni obrt:</strong> Limit <strong>60.000 €</strong>. Najpovoljniji oblik. Fiksni porez.",
-            desc_regular: "<strong>Dohodovni (KP):</strong> Obavezno iznad 60.000 €. Vodite knjige, porez na stvarni dobitak.",
+            desc_pausal: "<strong>Paušalni obrt 2025:</strong><br>Limit: 60.000 €<br>Porez: Gradovi odlučuju (obično 10-12%).<br>Doprinosi: 262,51 €/mj.<br><em>*Prirez je ukinut.</em>",
+            desc_regular: "<strong>Dohodovni (KP):</strong> Obavezno iznad 60.000 €. Vodite knjige, porez na stvarni dobitak po stopama grada (npr. 20-23.6%).",
             stat_main: "Glavno zanimanje",
             stat_side: "Uz rad (Drugo)",
             lbl_rev: "Naplaćeni Prihodi (€)",
             desc_rev: "Ukupni iznos naplaćenih računa (načelo blagajne).",
             lbl_exp: "Poslovni Troškovi",
-            desc_exp: "<strong>Samo za Dohodovni:</strong> Priznaju se svi troškovi povezani s poslovanjem: najam ureda, komunalije, oprema, materijal, 50-100% automobila, itd.<br><br>Kod Paušalnog obrta troškovi se <strong>ne pravdaju</strong>.",
+            desc_exp: "<strong>Samo za Dohodovni:</strong> Priznaju se svi troškovi povezani s poslovanjem: najam, oprema, materijal, 50-100% automobila, itd.<br><br>Kod Paušalnog obrta troškovi se <strong>ne pravdaju</strong>.",
             city_custom: "Ostalo / Ručni unos",
             lbl_city: "Lokacija (Porez)",
-            desc_city: "Gradovi samostalno određuju stopu poreza na dohodak.",
+            desc_city: "Gradovi samostalno određuju stopu poreza. <strong>Paušalni obrt često ima drugačiju (nižu) stopu od dohodovnog!</strong> Provjerite službene stranice.",
             res_tier: "Paušalni Razred",
             res_gross_profit: "Bruto Dobit",
             lbl_deduction: "Osobni Odbitak",
@@ -476,23 +475,27 @@
             res_base: "Porezna osnovica",
             res_tax: "Godišnji Porez",
             res_soc: "Godišnji Doprinosi",
-            desc_mio: "<strong>MIO (Mirovinsko):</strong><br>• I. Stup (15%): Solidarnost (za trenutne mirovine)<br>• II. Stup (5%): Vaša osobna štednja (nasljedno)<br><br><strong>ZO (Zdravstveno):</strong><br>• 16.5% za obvezno zdravstveno osiguranje",
+            desc_mio: "<strong>Doprinosi 2025:</strong><br>Mjesečna obveza: <strong>262,51 €</strong><br>• MIO I: 107,88 €<br>• MIO II: 35,96 €<br>• ZO: 118,67 €",
             res_net: "Godišnji Neto",
             lbl_effective: "Efektivno davanja:",
-            alert_limit: "⛔ PREKORAČENJE: Prešli ste 60.000 €! Obavezan prelazak na dohodovni obrt i PDV."
+            alert_limit: "⛔ PREKORAČENJE: Prešli ste 60.000 €! Obavezan prelazak na dohodovni obrt i PDV.",
+            term_quarterly: "kvartalno",
+            term_monthly: "mjesečno",
+            lbl_tier_limit: "Limit razreda",
+            lbl_tier_base: "Godišnja osnovica"
         },
         en: {
-            desc_pausal: "<strong>Flat-rate (Paušalni):</strong> Limit <strong>60,000 €</strong>. Fixed tax.",
-            desc_regular: "<strong>Income-based (Dohodovni):</strong> Mandatory > 60k. Real bookkeeping.",
+            desc_pausal: "<strong>Flat-rate (Paušalni) 2025:</strong><br>Limit: 60,000 €<br>Tax: Set by City (usually 10-12%).<br>Contribs: 262.51 €/mo.<br><em>*Surtax abolished.</em>",
+            desc_regular: "<strong>Income-based (Dohodovni):</strong> Mandatory > 60k. Real bookkeeping. Taxed at city rates (e.g., 20-23.6%).",
             stat_main: "Main Job",
             stat_side: "Side Job",
             lbl_rev: "Annual Revenue (€)",
             desc_rev: "Total collected invoices (Cash basis).",
             lbl_exp: "Business Expenses",
-            desc_exp: "<strong>Income-based only:</strong> All business related costs are deductible: rent, utilities, equipment, car (50-100%), etc.<br><br>For Flat-rate, expenses are <strong>ignored</strong>.",
+            desc_exp: "<strong>Income-based only:</strong> All business related costs are deductible: rent, equipment, car (50-100%), etc.<br><br>For Flat-rate, expenses are <strong>ignored</strong>.",
             city_custom: "Other / Manual",
             lbl_city: "Location (Tax Rate)",
-            desc_city: "Cities set their own income tax rates.",
+            desc_city: "Cities set their own income tax rates. <strong>Flat-rate trades often have a different (lower) rate than regular income!</strong> Check official sources.",
             res_tier: "Tax Tier",
             res_gross_profit: "Gross Profit",
             lbl_deduction: "Personal Allowance",
@@ -500,23 +503,27 @@
             res_base: "Tax Base",
             res_tax: "Annual Tax",
             res_soc: "Annual Contributions",
-            desc_mio: "<strong>MIO (Pension):</strong><br>• Pillar I (15%): Solidarity<br>• Pillar II (5%): Personal savings (Inheritable)<br><br><strong>ZO (Health):</strong><br>• 16.5% mandatory insurance",
+            desc_mio: "<strong>Contributions 2025:</strong><br>Monthly total: <strong>262.51 €</strong><br>• Pension I: 107.88 €<br>• Pension II: 35.96 €<br>• Health: 118.67 €",
             res_net: "Annual Net",
             lbl_effective: "Effective Tax Rate:",
-            alert_limit: "⛔ LIMIT BREACH: You exceeded 60,000 €! Mandatory VAT & bookkeeping."
+            alert_limit: "⛔ LIMIT BREACH: You exceeded 60,000 €! Mandatory VAT & bookkeeping.",
+            term_quarterly: "quarterly",
+            term_monthly: "monthly",
+            lbl_tier_limit: "Tier Limit",
+            lbl_tier_base: "Annual Base"
         },
         sl: {
-            desc_pausal: "<strong>Paušalni:</strong> Limit <strong>60.000 €</strong>. Fiksni davek.",
-            desc_regular: "<strong>Dohodovni:</strong> Obvezno nad 60k. Vodenje knjig.",
+            desc_pausal: "<strong>Paušalni 2025:</strong><br>Limit: 60.000 €<br>Davek: Določajo mesta (10-12%).<br>Prispevki: 262,51 €/mes.<br><em>*Prirez ukinjen.</em>",
+            desc_regular: "<strong>Dohodovni:</strong> Obvezno nad 60k. Vodenje knjig. Davek po stopnji mesta (20-23%).",
             stat_main: "Glavni poklic",
             stat_side: "Popoldanski",
             lbl_rev: "Letni prihodki (€)",
             desc_rev: "Plačani računi.",
             lbl_exp: "Poslovni stroški",
-            desc_exp: "<strong>Samo za Dohodovni:</strong> Priznajo se vsi poslovni stroški (najem, oprema, avto, itd).<br><br>Pri Pavšalnem se stroški <strong>ne upoštevajo</strong>.",
+            desc_exp: "<strong>Samo za Dohodovni:</strong> Priznajo se vsi poslovni stroški.<br><br>Pri Pavšalnem se stroški <strong>ne upoštevajo</strong>.",
             city_custom: "Drugo / Ročno",
             lbl_city: "Lokacija (Stopnja)",
-            desc_city: "Mesta določajo svojo stopnjo davka.",
+            desc_city: "Mesta določajo svojo stopnjo davka. <strong>Pavšalisti imajo pogosto nižjo stopnjo!</strong> Preverite uradni zemljevid.",
             res_tier: "Pavšalni razred",
             res_gross_profit: "Bruto dobiček",
             lbl_deduction: "Osebna olajšava",
@@ -524,10 +531,14 @@
             res_base: "Davčna osnova",
             res_tax: "Letni davek",
             res_soc: "Letni prispevki",
-            desc_mio: "<strong>MIO (Pokojninsko):</strong><br>• I. Steber (15%): Solidarnost<br>• II. Steber (5%): Osebni prihranki<br><br><strong>ZO (Zdravstveno):</strong><br>• 16.5% obvezno zavarovanje",
+            desc_mio: "<strong>Prispevki 2025:</strong><br>Mesečno skupaj: <strong>262,51 €</strong><br>• Pokojninsko I: 107,88 €<br>• Pokojninsko II: 35,96 €<br>• Zdravstveno: 118,67 €",
             res_net: "Letni Neto",
             lbl_effective: "Efektivna stopnja:",
-            alert_limit: "⛔ PREKORAČITEV: Presegli ste 60.000 €! Obvezen DDV in vodenje knjig."
+            alert_limit: "⛔ PREKORAČITEV: Presegli ste 60.000 €! Obvezen DDV in vodenje knjig.",
+            term_quarterly: "četrtletno",
+            term_monthly: "mesečno",
+            lbl_tier_limit: "Limit razreda",
+            lbl_tier_base: "Letna osnova"
         }
     };
 
@@ -596,7 +607,12 @@
             customInput.style.display = 'block';
         } else {
             customInput.style.display = 'none';
-            customInput.value = CONFIG.cities[city].low;
+            const cityData = CONFIG.cities[city];
+            if (state.mode === 'pausal') {
+                customInput.value = cityData.pausal || 12.0;
+            } else {
+                customInput.value = cityData.low;
+            }
         }
         calc();
     }
@@ -616,10 +632,12 @@
         document.getElementById('tab-regular').className = m === 'regular' ? 'toggle-btn active' : 'toggle-btn';
         
         document.getElementById('grp-exp').style.display = m === 'regular' ? 'block' : 'none';
-        document.getElementById('row-tier').style.display = m === 'pausal' ? 'flex' : 'none';
+        document.getElementById('pausal-breakdown').style.display = m === 'pausal' ? 'block' : 'none';
         
         document.getElementById('regular-breakdown').style.display = m === 'regular' ? 'block' : 'none';
         document.getElementById('breakdown-soc').style.display = m === 'regular' ? 'block' : 'none';
+        
+        handleCityChange();
         calc();
     }
 
@@ -639,18 +657,19 @@
         const exp = parseFloat(document.getElementById('expenses').value) || 0;
         
         let cityKey = document.getElementById('city-select').value;
-        let rateLow = 0, rateHigh = 0;
+        let rate = 0;
         
         if (cityKey === 'custom') {
-            rateLow = (parseFloat(document.getElementById('city-rate').value) || 20) / 100;
-            rateHigh = rateLow + 0.10;
+            rate = (parseFloat(document.getElementById('city-rate').value) || 12) / 100;
         } else {
-            rateLow = CONFIG.cities[cityKey].low / 100;
-            rateHigh = CONFIG.cities[cityKey].high / 100;
+            rate = (parseFloat(document.getElementById('city-rate').value) || 12) / 100;
         }
 
         let tax = 0, soc = 0, net = 0;
         let alertMsg = "";
+
+        document.getElementById('out-tax-detail').innerText = "";
+        document.getElementById('out-soc-detail').innerText = "";
 
         if (state.mode === 'pausal') {
             if (rev > CONFIG.limit_pausal) {
@@ -662,17 +681,26 @@
 
             if (tier) {
                 let base = tier.base; 
-                tax = base * rateLow;
+                tax = base * rate;
 
-                document.getElementById('out-tier-base').innerText = `Limit: ${tier.limit} € (Osnovica: ${base} €)`;
+                let taxQuarter = tax / 4;
+                document.getElementById('out-tax-detail').innerText = `(${fmt(taxQuarter)} ${TEXT[state.lang].term_quarterly})`;
+
+                document.getElementById('badge-tier').innerText = `Razred ${tierIndex + 1}`;
+                document.getElementById('out-tier-limit').innerText = fmt(tier.limit);
+                document.getElementById('out-tier-base').innerText = fmt(base);
                 
                 if (state.status === 'main') {
-                    soc = CONFIG.contrib.main_annual_pausal;
+                    let socMonth = CONFIG.contrib.main_monthly_pausal;
+                    soc = socMonth * 12;
+                    document.getElementById('out-soc-detail').innerText = `(${fmt(socMonth)} ${TEXT[state.lang].term_monthly})`;
                 } else {
                     soc = base * CONFIG.contrib.side_rate;
+                    document.getElementById('out-soc-detail').innerText = "";
                 }
             }
         } else {
+            // DOHODOVNI
             let profit = rev - exp;
             let socBase = 0;
             
@@ -700,11 +728,11 @@
             document.getElementById('out-base').innerText = fmt(taxBase);
 
             if (taxBase > CONFIG.regular.tax_threshold) {
-                let lower = CONFIG.regular.tax_threshold * rateLow; 
-                let higher = (taxBase - CONFIG.regular.tax_threshold) * rateHigh; 
+                let lower = CONFIG.regular.tax_threshold * rate; 
+                let higher = (taxBase - CONFIG.regular.tax_threshold) * (rate + 0.10); 
                 tax = lower + higher;
             } else {
-                tax = taxBase * rateLow;
+                tax = taxBase * rate;
             }
         }
 
@@ -715,7 +743,7 @@
         document.getElementById('out-net').innerText = fmt(net);
         
         let eff = rev > 0 ? ((tax + soc) / rev * 100) : 0;
-        document.getElementById('out-eff').innerText = eff.toFixed(1) + '%';
+        document.getElementById('out-eff-val').innerText = eff.toFixed(1) + '%';
 
         const alertBox = document.getElementById('alert-box');
         if (alertMsg) {
