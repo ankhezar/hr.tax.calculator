@@ -127,8 +127,6 @@
             appearance: none; -moz-appearance: textfield;
         }
         .form-control:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--ring-focus); }
-        
-        /* Strictly hide native spinners */
         .form-control::-webkit-outer-spin-button,
         .form-control::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
         
@@ -146,7 +144,7 @@
             border: 1px solid var(--border); 
             background: var(--btn-bg);
             border-radius: 6px; 
-            color: var(--primary); /* Theme Color */
+            color: var(--primary); 
             font-size: 1.25rem; font-weight: 500;
             cursor: pointer; display: flex; align-items: center; justify-content: center;
             transition: all 0.1s; user-select: none; -webkit-tap-highlight-color: transparent;
@@ -155,19 +153,32 @@
         .spin-btn:active { background: var(--btn-active); transform: scale(0.96); }
 
         /* INFO TRIGGER & POPOVER */
+        /* Common relative wrapper for label+tooltip grouping */
+        .label-wrapper { position: relative; display: inline-flex; align-items: center; }
+
         .info-trigger {
             cursor: pointer; color: var(--primary); background: var(--primary-subtle);
             width: 18px; height: 18px; border-radius: 50%; text-align: center; line-height: 18px;
             font-size: 0.75rem; display: inline-block; margin-left: 6px; user-select: none; flex-shrink: 0;
         }
+        
         .popover {
-            display: none; position: absolute; top: 24px; left: 0; width: 280px;
-            background: var(--bg-card); border: 1px solid var(--border); padding: 16px;
-            border-radius: 12px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.15); z-index: 1000;
+            display: none; 
+            position: absolute; 
+            top: 26px; /* Below the trigger */
+            left: 0; 
+            width: 280px;
+            background: var(--bg-card); 
+            border: 1px solid var(--border); 
+            padding: 16px;
+            border-radius: 12px; 
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.15); 
+            z-index: 1000;
             font-size: 0.8rem; font-weight: 400; color: var(--text-muted); line-height: 1.4; text-align: left;
         }
         .popover.visible { display: block; animation: fadeUp 0.15s ease-out; }
         .popover.right { left: auto; right: 0; }
+        
         .popover strong { color: var(--text-main); font-weight: 600; }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -199,7 +210,6 @@
         .source-link { display: inline-block; font-size: 0.75rem; color: var(--primary); text-decoration: none; margin-top: 4px; }
         .source-link:hover { text-decoration: underline; }
 
-        /* Dependents Section */
         .dependents-grid {
             display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
             background: var(--bg-body); padding: 1rem; border-radius: 12px;
@@ -227,18 +237,22 @@
     <!-- MODE TOGGLE -->
     <div class="toggle-group">
         <div class="toggle-btn active" onclick="setMode('pausal', event)" id="tab-pausal">
-            <span>Paušalni</span>
-            <span class="info-trigger" data-tip="tip-pausal">?</span>
-            <div id="tip-pausal" class="popover">
-                <span data-t="desc_pausal"></span>
-            </div>
+            <span class="label-wrapper">
+                <span>Paušalni</span>
+                <span class="info-trigger" data-tip="tip-pausal">?</span>
+                <div id="tip-pausal" class="popover">
+                    <span data-t="desc_pausal"></span>
+                </div>
+            </span>
         </div>
         <div class="toggle-btn" onclick="setMode('regular', event)" id="tab-regular">
-            <span>Dohodovni (KP)</span>
-            <span class="info-trigger" data-tip="tip-reg">?</span>
-            <div id="tip-reg" class="popover right">
-                <span data-t="desc_regular"></span>
-            </div>
+            <span class="label-wrapper">
+                <span>Dohodovni (KP)</span>
+                <span class="info-trigger" data-tip="tip-reg">?</span>
+                <div id="tip-reg" class="popover right">
+                    <span data-t="desc_regular"></span>
+                </div>
+            </span>
         </div>
     </div>
     
@@ -256,10 +270,12 @@
         <!-- Revenue -->
         <div class="form-group">
             <div class="label-row">
-                <span data-t="lbl_rev">Naplaćeni Prihodi (€)</span>
-                <span class="info-trigger" data-tip="tip-rev">?</span>
-                <div id="tip-rev" class="popover">
-                    <span data-t="desc_rev"></span>
+                <div class="label-wrapper">
+                    <span data-t="lbl_rev">Naplaćeni Prihodi (€)</span>
+                    <span class="info-trigger" data-tip="tip-rev">?</span>
+                    <div id="tip-rev" class="popover">
+                        <span data-t="desc_rev"></span>
+                    </div>
                 </div>
             </div>
             <div class="input-wrapper">
@@ -274,10 +290,12 @@
         <!-- Expenses (Dohodovni Only) -->
         <div class="form-group" id="grp-exp" style="display:none;">
             <div class="label-row">
-                <span data-t="lbl_exp">Poslovni Troškovi (€)</span>
-                <span class="info-trigger" data-tip="tip-exp">?</span>
-                <div id="tip-exp" class="popover right">
-                    <span data-t="desc_exp"></span>
+                <div class="label-wrapper">
+                    <span data-t="lbl_exp">Poslovni Troškovi (€)</span>
+                    <span class="info-trigger" data-tip="tip-exp">?</span>
+                    <div id="tip-exp" class="popover right">
+                        <span data-t="desc_exp"></span>
+                    </div>
                 </div>
             </div>
             <div class="input-wrapper">
@@ -292,10 +310,12 @@
         <!-- City / Location -->
         <div class="form-group">
             <div class="label-row">
-                <span data-t="lbl_city">Lokacija (Porez)</span>
-                <span class="info-trigger" data-tip="tip-city">?</span>
-                <div id="tip-city" class="popover right">
-                    <span data-t="desc_city"></span>
+                <div class="label-wrapper">
+                    <span data-t="lbl_city">Lokacija (Porez)</span>
+                    <span class="info-trigger" data-tip="tip-city">?</span>
+                    <div id="tip-city" class="popover right">
+                        <span data-t="desc_city"></span>
+                    </div>
                 </div>
             </div>
             <select id="city-select" class="form-control" onchange="handleCityChange()">
@@ -321,10 +341,12 @@
     <!-- NEW DEPENDENTS CONFIGURATION (Dohodovni Only) -->
     <div id="dependents-config" class="dependents-grid" style="display:none;">
         <div class="dep-title">
-            <span data-t="lbl_dep_config">Postavke Osobnog Odbitka (2025)</span>
-            <span class="info-trigger" data-tip="tip-dep-config">?</span>
-            <div id="tip-dep-config" class="popover">
-                <span data-t="desc_dep_config"></span>
+            <div class="label-wrapper">
+                <span data-t="lbl_dep_config">Postavke Osobnog Odbitka (2025)</span>
+                <span class="info-trigger" data-tip="tip-dep-config">?</span>
+                <div id="tip-dep-config" class="popover">
+                    <span data-t="desc_dep_config"></span>
+                </div>
             </div>
         </div>
         
@@ -379,7 +401,13 @@
                 <span class="val" id="out-profit">0.00 €</span>
             </div>
             <div class="result-row sub">
-                <span>- <span data-t="lbl_deduction">Osobni Odbitak</span></span>
+                <div class="label-wrapper">
+                    <span>- <span data-t="lbl_deduction">Osobni Odbitak</span></span>
+                    <span class="info-trigger" data-tip="tip-deduction" style="font-size:0.7rem; width:14px; height:14px; line-height:14px;">?</span>
+                    <div id="tip-deduction" class="popover">
+                        <span data-t="desc_deduction"></span>
+                    </div>
+                </div>
                 <span class="val" id="out-deduction">0.00 €</span>
             </div>
             <div class="result-row" style="margin-bottom:1.5rem;">
@@ -397,12 +425,12 @@
         </div>
 
         <div class="result-row">
-            <span>
+            <div class="label-wrapper">
                 <span data-t="res_soc">Godišnji doprinosi</span>
                 <span class="info-trigger" data-tip="tip-mio">?</span>
-            </span>
-            <div id="tip-mio" class="popover">
-                <span data-t="desc_mio"></span>
+                <div id="tip-mio" class="popover">
+                    <span data-t="desc_mio"></span>
+                </div>
             </div>
             <span class="val text-red" id="out-soc">0.00 €</span>
         </div>
